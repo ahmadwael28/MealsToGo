@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 import { RestaurantNavigator } from "./restaurants.navigator";
 import { MapScreen } from "../../features/map/screens/map.screen";
-import { SettingsScreen } from "../../features/settings/screens/settings.screen";
+import { SettingsNavigator } from "./settings.navigator";
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
 import { LocationContextProvider } from "../../services/location/location.context";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
@@ -40,7 +40,10 @@ export const AppNavigator = () => {
               component={RestaurantNavigator}
             />
             <TabNavigator.Screen name="Map" component={MapScreen} />
-            <TabNavigator.Screen name="Settings" component={SettingsScreen} />
+            <TabNavigator.Screen
+              name="Settings"
+              component={SettingsNavigator}
+            />
           </TabNavigator.Navigator>
         </RestaurantsContextProvider>
       </LocationContextProvider>
