@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { ActivityIndicator, Colors } from "react-native-paper";
 import {
   AccountBackground,
@@ -16,7 +16,16 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, isLoading, error } = useContext(AuthenticationContext);
+  const { onLogin, isLoading, error, resetError } = useContext(
+    AuthenticationContext
+  );
+
+  useEffect(() => {
+    return () => {
+      resetError();
+    };
+  }, []);
+
   return (
     <AccountBackground>
       <AccountCover />

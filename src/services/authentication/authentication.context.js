@@ -26,20 +26,23 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
+  const resetError = () => {
+    setError(null);
+  };
+
   const onLogout = () => {
-    setUser(null);
     signoutRequest().then(() => {
       setUser(null);
-      setError(null);
+      resetError();
     });
   };
 
   const onRegister = (email, password, repeatedPassword) => {
-    setIsLoading(true);
     if (password !== repeatedPassword) {
       setError("Error: Passwords do not match");
       return;
     }
+    setIsLoading(true);
     registerRequest(email, password)
       .then((usr) => {
         setUser(usr);
@@ -55,8 +58,6 @@ export const AuthenticationContextProvider = ({ children }) => {
     if (urs) {
       setUser(urs);
       setIsLoading(false);
-    } else {
-      setIsLoading(false);
     }
   });
   return (
@@ -69,6 +70,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         onLogin,
         onRegister,
         onLogout,
+        resetError,
       }}
     >
       {children}
