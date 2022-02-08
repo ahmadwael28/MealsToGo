@@ -45,7 +45,7 @@ export const MapScreen = ({ navigation }) => {
           >
             <MapView.Callout
               onPress={() =>
-                navigation.navigate("RestaurantDetail", { restaurant })
+                navigation.navigate("RestaurantDetailPage", { restaurant })
               }
             >
               <MapCallout restaurant={restaurant} />
