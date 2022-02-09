@@ -22,6 +22,11 @@
       "buildNumber": "1.0.0"
     },
     "android": {
+      "config":{
+        "googleMaps": {
+          "apiKey":"AIzaSyCQTR31UvSoCnfCxoc_F-ak2GP2JIImyrk"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
